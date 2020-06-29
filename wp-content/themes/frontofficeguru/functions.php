@@ -389,7 +389,7 @@ function site_script()
     wp_enqueue_script('fancy-script', get_theme_file_uri() . '/js/jquery.fancybox.min.js', array(), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('general-script', get_theme_file_uri() . '/js/general.js', array(), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('membership-nav', get_theme_file_uri() . '/js/membership-navigation.js', array(), wp_get_theme()->get('Version'), true);
-    //wp_enqueue_script( 'map-script', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxpFA4oFr0LaqBIuNiWvXu2wlLS3Zmq_s', array(), wp_get_theme()->get( 'Version' ) , true );
+
     wp_localize_script(
         'general-script',
         'frontend_ajax_object',
