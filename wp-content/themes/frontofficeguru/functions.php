@@ -372,9 +372,10 @@ function site_styles()
     wp_register_style('pr-wired-app', get_theme_file_uri() . '/assets/css/page-pt-wired-app.css');
 
     // membership stylesheet
-    wp_enqueue_style('course', get_theme_file_uri() . '/style-course.css'); 
-    wp_enqueue_style('membership', get_theme_file_uri() . '/style-membership.css');  
-    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css');
+
+    //wp_enqueue_style('course', get_theme_file_uri() . '/style-course.css');
+    //wp_enqueue_style('membership', get_theme_file_uri() . '/style-membership.css');
+    //wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css');
 }
 add_action('wp_enqueue_scripts', 'site_styles');
 //add_action( 'get_footer', 'site_styles' );
@@ -388,8 +389,8 @@ function site_script()
     wp_enqueue_script('matchheight-script', get_theme_file_uri() . '/js/jquery.matchheight.min.js', array(), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('fancy-script', get_theme_file_uri() . '/js/jquery.fancybox.min.js', array(), wp_get_theme()->get('Version'), true);
     wp_enqueue_script('general-script', get_theme_file_uri() . '/js/general.js', array(), wp_get_theme()->get('Version'), true);
-    wp_enqueue_script('membership-nav', get_theme_file_uri() . '/js/membership-navigation.js', array(), wp_get_theme()->get('Version'), true);
 
+    //wp_enqueue_script( 'map-script', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxpFA4oFr0LaqBIuNiWvXu2wlLS3Zmq_s', array(), wp_get_theme()->get( 'Version' ) , true );
     wp_localize_script(
         'general-script',
         'frontend_ajax_object',
@@ -398,6 +399,11 @@ function site_script()
             'ajax_url' => admin_url('admin-ajax.php'),
         )
     );
+	$script_data_array = array(
+	   'ajaxurl' => admin_url( 'admin-ajax.php' ),
+	   'security' => wp_create_nonce( 'load_more_posts' ),
+   );
+	wp_localize_script( 'general-script', 'video_more', $script_data_array );
 }
 add_action('wp_enqueue_scripts', 'site_script');
 
@@ -694,6 +700,74 @@ function cptui_register_my_cpts()
     );
 
     register_post_type("story", $args);
+
+	/**
+	 * Post Type: Faqs.
+	 */
+
+	$labels = array(
+		"name" => __( "Faqs" ),
+		"singular_name" => __( "FAQ" ),
+	);
+
+	$args = array(
+		"label" => __( "Faqs" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "faq", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail" ),
+	);
+
+	register_post_type( "faq", $args );
+
+	/**
+	 * Post Type: Webinars.
+	 */
+
+	$labels = array(
+		"name" => __( "Webinars" ),
+		"singular_name" => __( "Webinar" ),
+	);
+
+	$args = array(
+		"label" => __( "Webinars" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "webinar", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt" ),
+	);
+
+	register_post_type( "webinar", $args );
 
     /**
      * Post Type: Our Staffs.
@@ -1333,3 +1407,158 @@ function main_navigation()
     );
     return ob_get_clean();
 }
+
+
+add_shortcode( 'get_first_lesson_permalink', 'get_first_lesson_permalink' );
+
+function get_first_lesson_permalink() {
+global $post;
+
+if ( ! empty( $post ) && $post->post_type == 'sfwd-courses' && ! empty( $post->ID ) ) {
+
+    $lessons = learndash_get_course_lessons_list( $post->ID );
+
+    if ( ! empty( $lessons ) ) {
+        $lesson = array_shift( $lessons );
+
+        if ( ! empty( $lesson ) ) {
+            $url = get_permalink( $lesson[ "post" ]->ID );
+            return $url;
+
+        }
+    }
+}
+}
+
+
+
+
+/*
+ * Enqueue scripts and styles.
+ */
+function ja_global_enqueues() {
+	wp_enqueue_script(
+		'jquery-auto-complete',
+		get_template_directory_uri() . '/js/jquery.auto-complete.min.js',
+		array( 'jquery' ),
+		'1.0.7',
+		true
+	);
+	// wp_enqueue_script(
+	// 	'general',
+	// 	get_template_directory_uri() . '/js/general.js',
+	// 	array( 'jquery' ),
+	// 	'1.0.0',
+	// 	true
+	// );
+	wp_localize_script(
+		'jquery-auto-complete',
+		'global',
+		array(
+			'ajax' => admin_url( 'admin-ajax.php' ),
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'ja_global_enqueues' );
+
+/*
+ * Live autocomplete search feature.
+ * @since 1.0.0
+ */
+function ja_ajax_search() {
+	$results = new WP_Query( array(
+		'post_type'     => array( 'post', 'page' ),
+		'post_status'   => 'publish',
+		'nopaging'      => true,
+		'posts_per_page'=> 100,
+		's'             => stripslashes( $_POST['search'] ),
+	) );
+	$items = array();
+	// print_r($results->posts);
+	// exit();
+	if ( !empty( $results->posts )) {
+		foreach ( $results->posts as $result) {
+			$items[] = $result->post_title;
+		}
+	}
+	wp_send_json_success( $items );
+}
+add_action( 'wp_ajax_search_site',        'ja_ajax_search' );
+add_action( 'wp_ajax_nopriv_search_site', 'ja_ajax_search' );
+
+
+add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+
+function load_posts_by_ajax_callback() {
+    check_ajax_referer('load_more_posts', 'security');
+    $paged = $_POST['page'];
+    $args = array(
+        'post_type' => 'faq',
+        'post_status' => 'publish',
+        'posts_per_page' => '5',
+        'order'     => 'ASC',
+        'paged' => $paged,
+    );
+    $faq_query = new WP_Query( $args );
+    ?>
+
+    <?php if ( $faq_query->have_posts() ) : ?>
+        <?php while ( $faq_query->have_posts() ) : $faq_query->the_post();
+
+		echo '<li class="mb-20 border-1 solid border-black">' .
+			'<h6 class="text-16 mb-0"><a href="'. get_the_permalink() .'" class="d-block p-10 pr-35 position-relative"><span class="plus-minus"></span>' . get_the_title() .'</a></h6>' .
+			'<div class="faq_content p-15 d-none"><p>' . get_the_Content() . '</p></div>' .
+		'</li>';
+
+        endwhile; ?>
+        <?php
+    endif;
+
+    wp_die();
+}
+
+
+/******** FAQ Fetch Result *************/
+
+add_action('wp_ajax_faq_posts_by_ajax', 'faq_posts_by_ajax_callback');
+add_action('wp_ajax_nopriv_faq_posts_by_ajax', 'faq_posts_by_ajax_callback');
+
+function faq_posts_by_ajax_callback() {
+    $search_term = $_POST['search'];
+    $args = array(
+        'post_type'   => 'faq',
+        'post_status' => 'publish',
+        'order'       => 'DESC',
+        'orderby'     => 'menu_order',
+        'posts_per_page' => '-1',
+        's'           => $search_term,
+    );
+    $faq_query = new WP_Query( $args );
+    ?>
+
+    <?php if ( $faq_query->have_posts() ) : ?>
+        <?php $i=0; while ( $faq_query->have_posts() ) : $faq_query->the_post();
+            if($i >= 5){ $add_toggleclass = ' toggleable'; $hide_section = 'style="display: none;"'; }else{  $add_toggleclass =''; $hide_section = '';}
+            echo '<li class="mb-20 border-1 solid border-black'.$add_toggleclass.'" '.$hide_section.'>' .
+                '<h6 class="text-16 mb-0 text-left"><a href="#" onclick="return false;" class="d-block p-10 pr-35 position-relative"><span class="plus-minus"></span>' . get_the_title() .'</a></h6>' .
+                '<div class="faq_content p-15 d-none text-left"><p class="">' . get_the_Content() . '</p></div>' .
+            '</li>';
+            $i++;
+        endwhile; 
+        if($i  > 5){
+            echo '<li class="more">VIEW MORE QUESTIONS</li>';
+        }
+        
+        ?>
+        <?php
+    else:
+        echo "No result found";
+    endif;
+    wp_reset_query();
+    wp_reset_postdata();
+    wp_die();
+}
+
+
+/*************** End   *****************/

@@ -15,7 +15,7 @@ get_header('membership');
     <div class="title">
         <h3>Modules</h3>
         <div class="post-title main-title">
-            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard">< Dashboard</a></p>
+            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard"> > Dashboard</a></p>
         </div>    
     </div>
     <div>
@@ -26,7 +26,7 @@ get_header('membership');
             $args= array('post_type' => 'sfwd-courses',
                         'post_status' => 'publish',
                         'order' => 'ASC',
-                        'orderby' => 'ID',
+                        'orderby' => 'menu_order',
                         'mycourses' => false,
                         'posts_per_page'=>-1
                     );
@@ -34,9 +34,9 @@ get_header('membership');
             $loop = new WP_Query( $args );
 
              while ( $loop->have_posts() ) : $loop->the_post();
-                echo "<pre>";
+                // echo "<pre>";
                 // print_r($post);
-                echo "</pre>";
+                // echo "</pre>";
 
                 $ID = $post->ID;
 

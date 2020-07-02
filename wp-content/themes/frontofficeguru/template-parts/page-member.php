@@ -21,13 +21,13 @@ get_header('membership');
 
 		<div class="banner">
 			<div>
-				<img src="http://fixyourfrontdesk.com/wp-content/themes/frontofficeguru/images/FYFD-video-holder.png">
+				<img src="https://fixyourfrontdesk.com/wp-content/uploads/2020/06/Dee-headshot-1.jpg">
 			</div>
-			<div>
-				<h3>Learn from the Front Office Guru...</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-				<a href="https://google.com" class="gb_button">Learn More</a>
-			</div>
+			<div><h3>Fix Your Front Desk Academy</h3>
+				<p>Our goal is to help you learn the necessary skills and obtain the knowledge to be in command of a super-efficient and productive front desk.</p> 
+				<p>Use these resources, tools, and training to become a highly skilled Patient Care Coordinator, so you can help more people.</p> 
+				<p>- Dee Bills, MSPT and Front Office Guru</p>
+				</div>
 		</div>
 
 	<?php
@@ -62,7 +62,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_faq">
-				<a href="">
+				<a href="/faq/">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">FAQ's</span>
@@ -70,7 +70,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_community">
-				<a href="">
+				<a href="https://www.facebook.com/groups/FYFDAcademy/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Community</span>
@@ -78,7 +78,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_webinar">
-				<a href="">
+				<a href="/webinars/">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Webinars</span>

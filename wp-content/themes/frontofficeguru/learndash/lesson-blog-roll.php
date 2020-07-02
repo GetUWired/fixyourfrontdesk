@@ -20,7 +20,7 @@ get_header('membership');
             <span><?php //echo single_post_title(); ?>: Lessons</span>
         </div> -->
         <div class="post-title main-title">
-            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard">Dashboard</a><span> < </span><a href="<?php get_template_directory_uri(); ?>/modules/">My Modules: </a><span> < </span> Lessons</p>
+            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard">Dashboard</a><span> > </span><a href="<?php get_template_directory_uri(); ?>/modules/">My Modules: </a><span> > </span> Lessons</p>
         </div>   
         
     </div>

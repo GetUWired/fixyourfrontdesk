@@ -51,7 +51,7 @@
                 vertical-align: middle;
             }
 
-            .menu-item-6854:before {
+            .menu-item-7498:before {
                 content: url("data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACiElEQVRIib2WS4iOYRTHf8PMmMZlTFJSJuSSECKEhVCIbIiljYWFWxZsZGExyUKSSxEbip0oJUXkLnJNKDSIJmRmXHPpp8c8n77e+d5v3pn5xr/O4nuf853f857nvOc8qGk2XK1Xb6s/zK7f6mN1jzoxLX4P2qovsB94BIwAtgNjgNqMNhTYCFQCV4DjwMA2lMRORsTdXlBHFclGVhusnlBfquPz/5MfYIj6Wt2n9iwBNGdl6lb1nToyCa5Qb6iHSghM2k71gdorH7wp/2E3WXks1C05cB/1gzqnG6E5m6U2BWY5sAx4DpwvUOFBFcBdoHfKelItwCTgd4G1y8BTYEUAL44ln6afwFKgKiP4Wwo0p2PAwvD6Deq0/5DmnAVWQyh14wf+PuMbdVWB1Vgeg/wqEiyc8UmgOiPwC7CkSLrD0ZUF8FegBmgq4rirA+DP7ZxxP+B7AD+OVdhQxPlsRmgWjQWehCFxCVhQwsDtaX5ghuKaCpwB6mKakgpZ2Qv0KrAW/NeGWZMRWhUzuzwEvQncB9YB9QWcw3ndSmkgzR2ABq0G3gAXc9/WDPWTOrobv99harM6NzkWd6gP1dpugNao9+KthCQ4zOBT6k11UAmhdeqdGLuiEDhYpXpEfaUu6iKwSl0Tp9GBGPvfellrx2yjVbHQngEHgcNFCmY2MDHvd7hrTfg7CFoLaTNwOvmnNDCxw6wEdge/FJ8NwLbESG2Jo+8ccC11u+2kq3+81Caf94hXmUZ1cmeOojx1R+kKTeAoMA6YDrzoRIwOgwfESRU0E/jQGWhQoQt9moYBV4G3wLyuQDsCngJcj9W5Ioy1rkD/KmNxhXa6vpTdrD2HavWjurSkLVT5A7COcGSu0cVOAAAAAElFTkSuQmCC");
                 margin: 0.6rem;
                 line-height: 1;
@@ -153,10 +153,13 @@
             <div class="menu">
                 <?php
                     $current_user = wp_get_current_user();
+                    $nameArr = explode(" ", $current_user->display_name);
 
                     echo do_shortcode('[memb_gravatar size=90 default=https://fixyourfrontdesk.com/wp-content/uploads/2020/06/Fix-Your-Front-Desk-profile-default.jpg]');
                 ?>
-                <p class="text-center text-light mt-1">Hello, <?= $current_user->user_login; ?></p>
+                <!-- <p class="text-center text-light mt-1">Hello, <?= $current_user->display_name; ?></p> -->
+                <p class="text-center text-light mt-1">Hello, <?= $nameArr[0]; ?></p>
+
                 <?php
                     wp_nav_menu([
                         'theme_location' => 'membership-menu',

@@ -251,8 +251,11 @@ body#membership-site .banner > div {
 .page-id-6848 .grid_wrapper > p:first-of-type,
 .page-id-1703 .grid_wrapper > p:first-of-type,
 .page-id-6970 .grid_wrapper > p:first-of-type,
-.page-id-6973 .grid_wrapper > p:first-of-type {
+.page-id-6973 .grid_wrapper > p:first-of-type,
+.page-id-7506 .grid_wrapper > p:first-of-type,
+.page-id-7503 .grid_wrapper > p:first-of-type {
     display: none;
+}
 }
 
 .page-id-1628 ul.memberium_menu_list {
@@ -333,7 +336,7 @@ body#membership-site .banner > div {
 
 .enroll_child_user {
     width:80%;
-    min-width: 350px;
+    min-width: 320px;
     max-width: 750px;
 }
 
@@ -355,7 +358,16 @@ body#membership-site .banner > div {
 @media screen and (max-width: 665px) {
     .graphic_blocks {
         justify-content: center;
+        max-width: 80%;
     }
+}
+
+@media screen and (max-width: 575px) {
+    .memberium-c-box-100 {
+        max-width: 80%;
+        margin-bottom: 4%;        
+    }
+
 }
 
 .page-template-page-allstudents-progress .ld_course_info,
@@ -372,6 +384,7 @@ body#membership-site .banner > div {
 .page-template-course-blog-roll .graphic_blocks li {
     min-height: 475px;
     position: relative;
+    margin: 0 5% 25px 0;
 }
 
 .graphic_blocks h4,
@@ -410,7 +423,7 @@ body#membership-site .banner > div {
 }
 
 .page-template-page-allstudents-progress .ld_course_info {
-    height: auto;
+    height: 650px;
     overflow-y: scroll;
     padding: 1%;
 }
@@ -451,6 +464,7 @@ dd.course_progress > span {
     display:none;
 }
 
+#learndash_complete_prerequisites > a,
 #lessons_list>div h4>a,
 .learndash .learndash_topic_dots.type-list a>span{
     line-height:1.4em;
@@ -683,6 +697,14 @@ dd.course_progress > span {
     padding: 5px 10px;
 }
 
+.memberium-form form input[value="Disconnect"],
+.list_child_users table td a > input[type=button] {
+    max-width: 100%;
+    font-size: 1rem;
+}
+
+
+
 .memberium-form form input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     line-height: 0;
 }
@@ -712,7 +734,7 @@ dd.course_progress > span {
 .billing_history form {
     margin-bottom: 4%;
     background-color: #f6f6f6;
-    margin-bottom: 4%;
+    margin-top: 4%;
     box-shadow: 0px 0px 8px 5px rgba(209,209,209,1);
     -webkit-box-shadow: 0px 0px 8px 5px rgba(209,209,209,1);
     -moz-box-shadow: 0px 0px 8px 5px rgba(209,209,209,1);
@@ -767,7 +789,68 @@ dd.course_progress > span {
     opacity: 1;
 }
 
+@media screen and (max-width: 1200px) {
+    #learndash_next_prev_link > a {
+        font-size: 1rem;
+        padding: 7px;
+    }
+
+    .billing_history table {
+        display: grid;
+    }
+
+    .billing_history table tbody tr {   
+        display: grid;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .billing_history table tbody tr:first-child {   
+        display: none;
+    }
+
+    .page-id-1649 .billing_history table tbody tr:first-child,
+    .page-id-6995 .billing_history table tbody tr:first-child {   
+        display: grid;
+    }
+
+    .billing_history .list_child_users table td:first-child {
+        border-top: none;
+    }
+
+    .page-id-1649 table thead {
+        display: inline-flex;
+        width: 30%;
+    }
+
+    .page-id-1649 table tbody {
+        display: inline-flex;
+        width: 65%;
+    } 
+
+    .page-id-1649 .billing_history table {
+        display: flex;
+    }
+
+    .page-id-1649 .billing_history table thead tr {
+        display: grid;
+        width: 100%;
+    }    
+
+    .page-id-1649 .billing_history table tbody tr {
+        width: 90%;
+    }  
+
+    .page-id-1649 .billing_history table tr:first-of-type td {
+        width: auto;
+    } 
+}
+
 @media screen and (max-width: 901px) {
+    body#membership-site .main-content {
+        padding: 4% 0 0 1%;
+    }
+
     .billing_history {
         margin: 150px auto;
         padding: 0;
@@ -776,6 +859,29 @@ dd.course_progress > span {
     .enroll_child_user {
         margin: 0 auto;
     }
+
+
+}
+
+@media screen and (max-width: 500px) {
+    #learndash_next_prev_link {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #learndash_next_prev_link > a {
+        margin-bottom: 2%;
+        width: 300px;
+    }
+
+    .banner > div > a {
+        max-width: 100%;
+    }
+
+    .graphic_blocks li a {
+        width: 100%;
+    }
+
 }
 
 

@@ -23,7 +23,7 @@ global $wpdb;
         <h3>Lessons</h3>
 
         <div class="post-title main-title">
-            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard">Dashboard < </a><a href="<?php get_template_directory_uri(); ?>/modules">My Modules < </a><?php echo $course_name .' <span> < </span> '. get_the_title(); ?></p>
+            <p style="display: block;"><a href="<?php get_template_directory_uri(); ?>/member-dashboard">Dashboard > </a><a href="<?php get_template_directory_uri(); ?>/modules">My Modules > </a><?php echo $course_name .' <span> > </span> '. get_the_title(); ?></p>
         </div>
 
     </div> <!-- title -->

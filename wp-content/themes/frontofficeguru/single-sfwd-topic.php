@@ -15,9 +15,9 @@ global $wpdb;
 
 <?php $all_keys = get_post_custom_keys(); ?>
 
-<?php $course_name = '<a href="'.get_the_permalink(get_post_meta( $post->ID, 'course_id', TRUE)).'">'.get_the_title(get_post_meta( $post->ID, 'course_id', TRUE)).'</a>'; ?>
+<?php $course_name = '<a href="'.get_the_permalink(get_post_meta( $post->ID, 'course_id', TRUE)).'"<'.get_the_title(get_post_meta( $post->ID, 'course_id', TRUE)).'</a>'; ?>
 
-<?php $lesson_name = '<a href="'.get_the_permalink(get_post_meta( $post->ID, 'lesson_id', TRUE)).'">'.get_the_title(get_post_meta( $post->ID, 'lesson_id', TRUE)).'</a>'; ?>    
+<?php $lesson_name = '<a href="'.get_the_permalink(get_post_meta( $post->ID, 'lesson_id', TRUE)).'"<'.get_the_title(get_post_meta( $post->ID, 'lesson_id', TRUE)).'</a>'; ?>    
 
 <?php $course_data = get_post(get_post_meta( $post->ID, 'course_id', TRUE)); 
 

@@ -20,7 +20,7 @@ $complete = esc_attr( $percentage );
 
 $progressBar = "<dd class='course_progress'><span>" . esc_attr( $percentage ) . "%</span><div class='course_progress_blue' style='width: " . esc_attr( $percentage ) . "%;'></dd>";
 
-$completeBar = "<dd class='course_progress' style='background-color:#7eb64d;'>MODULE COMPLETE</dd>";
+$completeBar = "<dd class='course_progress' style='background-color:#7eb64d;padding-top: 5px;'>MODULE COMPLETE</dd>";
 
 if ($complete == '100') {
 	echo $completeBar;
