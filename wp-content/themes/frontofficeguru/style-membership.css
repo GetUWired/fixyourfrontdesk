@@ -226,7 +226,8 @@ body#membership-site .banner {
     max-width: 85%;
     margin: 1.5rem 0;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    justify-content: flex-start;
     background: #fffd;
 }
 
@@ -256,10 +257,16 @@ body#membership-site .banner > div {
 .page-id-7503 .grid_wrapper > p:first-of-type {
     display: none;
 }
+
+
+#memberium-shortcode-blocks .row .col-sm-6 > ul > li > .arrow_right {
+    border-left: 11px solid #79c140;
+    margin-right: 10px;
 }
 
-.page-id-1628 ul.memberium_menu_list {
-    margin-bottom: 50px;
+#learndash_lesson_materials > p > a {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .page-id-6970 .grid_wrapper > p
@@ -268,7 +275,8 @@ body#membership-site .banner > div {
 }
 
 .banner h3,
-.title h3 {
+.title h3,
+.billing_history h2 {
     font-size: 28px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -295,6 +303,10 @@ body#membership-site .banner > div {
     justify-content: space-between;
     max-width: 85%;
 
+}
+
+.page-template-course-blog-roll .grid_wrapper .main-content ul.graphic_blocks {
+    justify-content: flex-start;
 }
 
 /*.ld_course_info_mycourses_list, 
@@ -353,10 +365,24 @@ body#membership-site .banner > div {
     .graphic_blocks {
         justify-content: space-around;
     }
+
+    .page-template-course-blog-roll .grid_wrapper .main-content ul.graphic_blocks {
+        justify-content: flex-start;
+        max-width: 97%;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .page-template-course-blog-roll .grid_wrapper .main-content ul.graphic_blocks {
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 665px) {
-    .graphic_blocks {
+    
+    .graphic_blocks,
+    .page-template-course-blog-roll .grid_wrapper .main-content ul.graphic_blocks {
         justify-content: center;
         max-width: 80%;
     }
@@ -436,6 +462,10 @@ dd.course_progress {
     margin:15px auto 35px;
     position: relative;
     color: #000;
+}
+
+.page-template-course-blog-roll dd.course_progress.modules_list {
+    padding-top: 0 !important;
 }
 
 dd.course_progress div.course_progress_blue {
@@ -661,7 +691,7 @@ dd.course_progress > span {
 }
 
 .list_child_users table td a > input[type=button],
-.memberium-subscription-list input[type=submit],
+.memberium-subscription-list a,
 .memberium-form form input[type="submit"],
 #learndash_mark_complete_button,
 #learndash_next_prev_link > a,
@@ -691,10 +721,11 @@ dd.course_progress > span {
     max-width: 100%;
 }
 
-.memberium-subscription-list input[type=submit] {
+.memberium-subscription-list a {
     background-color: #79c140 !important;
     margin: 0;
     padding: 5px 10px;
+    max-width: 250px;
 }
 
 .memberium-form form input[value="Disconnect"],
@@ -745,9 +776,14 @@ dd.course_progress > span {
     margin:0 auto 60px;
 }
 
-.billing_history form > table {
+.billing_history form > table,
+.memberium-subscription-list div {
     margin: 0 auto;
     width: 90%;
+}
+
+.memberium-subscription-list div {
+    margin: 25px auto;
 }
 
 .billing_history table td {
@@ -844,6 +880,10 @@ dd.course_progress > span {
     .page-id-1649 .billing_history table tr:first-of-type td {
         width: auto;
     } 
+
+    .memberium-subscription-list a {
+        margin: 0 auto;
+    }
 }
 
 @media screen and (max-width: 901px) {

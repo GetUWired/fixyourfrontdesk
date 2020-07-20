@@ -155,6 +155,7 @@
                     $current_user = wp_get_current_user();
                     $nameArr = explode(" ", $current_user->display_name);
 
+
                     echo do_shortcode('[memb_gravatar size=90 default=https://fixyourfrontdesk.com/wp-content/uploads/2020/06/Fix-Your-Front-Desk-profile-default.jpg]');
                 ?>
                 <!-- <p class="text-center text-light mt-1">Hello, <?= $current_user->display_name; ?></p> -->
@@ -168,7 +169,8 @@
                     ]);
                 ?>
                 <p class="sidebar-footer bg-gray d-flex align-items-center justify-content-center p-3">
-                    <a href="<?php echo wp_logout_url( home_url()); ?>">
+                    <a href="<?php echo wp_logout_url('/log-out/'); ?>">
+
                         Logout
                     </a>
                 </p>

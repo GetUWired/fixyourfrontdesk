@@ -46,7 +46,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_resources">
-				<a href="">
+				<a href="/resources/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Resources</span>
@@ -54,7 +54,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_blog">
-				<a href="/blog/">
+				<a href="/blog/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Blog</span>
@@ -62,15 +62,15 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_faq">
-				<a href="/faq/">
+				<a href="/faq/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">FAQ's</span>
 					<span class="gb_button">Ask Questions</span>
 				</a>
 			</li>
-			<li class="gb_community">
-				<a href="https://www.facebook.com/groups/FYFDAcademy/" target="_blank">
+			<li class="gb_community" target="_blank">
+				<a href="https://fixyourfrontdesk.com/community/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Community</span>
@@ -78,7 +78,7 @@ get_header('membership');
 				</a>
 			</li>
 			<li class="gb_webinar">
-				<a href="/webinars/">
+				<a href="/webinars/" target="_blank">
 					<span class="gb_top_image"></span>
 					<span class="gb_icon"></span>
 					<span class="gb_text">Webinars</span>

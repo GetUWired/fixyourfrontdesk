@@ -35,26 +35,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Show Course Status
  */
 ?>
-
-<!-- inside shortcode -->
-<?php 
-
-
-
-if ( $has_course_content ) : ?>
+<?php if ( $has_course_content ) : ?>
 	<div id='learndash_course_content'>
 		<h4 id='learndash_course_content_title'>
 			<?php
-				// translators: Course Content Label.
-				// printf( esc_html_x( '%s Content', 'Course Content Label', 'learndash' ), LearnDash_Custom_Label::get_label( 'course' ) );
+				// translators: placeholder: Course.
+				printf( esc_html_x( '%s Content', 'placeholder: Course', 'learndash' ), LearnDash_Custom_Label::get_label( 'course' ) );
 			?>
 		</h4>
-		<?php /* Show Lesson List */ 
-			// echo "<pre>";
-			// print_r($lessons);
-			// echo "</pre>";
 
-		?>
+		<?php /* Show Lesson List */ ?>
 		<?php if ( ! empty( $lessons ) ) : ?>
 
 			<?php if ( $has_topics ) : ?>
@@ -65,23 +55,17 @@ if ( $has_course_content ) : ?>
 
 			<div id='learndash_lessons'>
 
-<!-- 				<div id='lesson_heading'>
-					<span><?php //echo LearnDash_Custom_Label::get_label( 'lessons' ); ?></span>
-					<span class='right'><?php //esc_html_e( 'Status', 'learndash' ); ?></span>
-				</div> -->
+				<div id='lesson_heading'>
+					<span><?php echo LearnDash_Custom_Label::get_label( 'lessons' ); ?></span>
+					<span class='right'><?php esc_html_e( 'Status', 'learndash' ); ?></span>
+				</div>
 				<div id='lessons_list'>
 
-					<?php 
-
-					foreach ( $lessons as $lesson ) : ?>
-						<div id='post-<?php echo $lesson['post']->ID; ?>' class='<?php echo $lesson['sample']; ?>'>
-							<div class='list-count'><?php echo $lesson['sno']; ?></div>
+					<?php foreach ( $lessons as $lesson ) : ?>
+						<div id='post-<?php echo absint( $lesson['post']->ID ); ?>' class='<?php echo esc_attr( $lesson['sample'] ); ?>'>
+							<div class='list-count'><?php echo esc_attr( $lesson['sno'] ); ?></div>
 							<h4>
-
-															
-								<a class='<?php echo esc_attr( $lesson['status'] ); ?>' href='<?php echo esc_url( learndash_get_step_permalink( $lesson['post']->ID, $course_id ) ); ?>'>
-									<?php echo apply_filters( 'the_title', $lesson['post']->post_title, $lesson['post']->ID ); ?>										
-								</a>
+								<a class='<?php echo esc_attr( $lesson['status'] ); ?>' href='<?php echo esc_url( learndash_get_step_permalink( $lesson['post']->ID, $course_id ) ); ?>'><?php echo apply_filters( 'the_title', $lesson['post']->post_title, $lesson['post']->ID ); ?></a>
 								<?php /* Not available message for drip feeding lessons */ ?>
 								<?php if ( ! empty( $lesson['lesson_access_from'] ) ) : ?>
 									<?php
@@ -110,12 +94,7 @@ if ( $has_course_content ) : ?>
 												<?php $completed_class = empty( $topic->completed ) ? 'topic-notcompleted' : 'topic-completed'; ?>
 												<li class='<?php echo $odd_class; ?>'>
 													<span class='topic_item'>
-														<a class='<?php echo $completed_class; ?>' href='<?php echo learndash_get_step_permalink( $topic->ID, $course_id ); ?>' title='<?php echo $topic->post_title; ?>'>
-															
-															<!-- FORMER CODE -->
-															<span><?php //echo $topic->post_title; ?></span>
-
-															<!-- UPDATED CODE -->
+														<a class='<?php echo esc_attr( $completed_class ); ?>' href='<?php echo esc_url( learndash_get_step_permalink( $topic->ID, $course_id ) ); ?>' title='<?php echo esc_html( apply_filters( 'the_title', $topic->post_title, $topic->ID ) ); ?>'>
 															<span><?php echo apply_filters( 'the_title', $topic->post_title, $topic->ID ); ?></span>
 														</a>
 													</span>
@@ -169,7 +148,7 @@ if ( $has_course_content ) : ?>
 						<?php foreach ( $quizzes as $quiz ) : ?>
 							<div id='post-<?php echo $quiz['post']->ID; ?>' class='<?php echo $quiz['sample']; ?>'>
 								<div class='list-count'><?php echo $quiz['sno']; ?></div>
-								<h4><a class='<?php echo $quiz['status']; ?>' href='<?php echo learndash_get_step_permalink( $quiz['post']->ID, $course_id ); ?>'><?php echo $quiz['post']->post_title; ?></a></h4>
+								<h4><a class='<?php echo esc_attr( $quiz['status'] ); ?>' href='<?php echo esc_url( learndash_get_step_permalink( $quiz['post']->ID, $course_id ) ); ?>'><?php echo apply_filters( 'the_title', $quiz['post']->post_title, $quiz['post']->ID ); ?></a></h4>
 							</div>
 						<?php endforeach; ?>
 					</div>

@@ -41,16 +41,15 @@ global $wpdb;
             <div class="current_course">
                 <h3><?php echo $course_name; ?></h3>
                 <div><?php 
-                    $singleId = $post->ID;
-                    echo do_shortcode('[learndash_course_progress course_id"' . $singleId . '""]');
+                    $singleId = $course_data->ID;
+                    echo do_shortcode('[learndash_course_progress course_id="' . $singleId . '"]');
                 ?></div>
             </div>
 
             <?php 
 
-                // echo "<div class='course_heading'>" . the_title() . "</div>";
-                 echo do_shortcode('[course_content course_id"' . $singleId . '""]');
-                // echo do_shortcode('[ld_course_list]');
+                 echo do_shortcode('[course_content course_id="' . $singleId . '"]');
+
              ?>
 
         </div>  

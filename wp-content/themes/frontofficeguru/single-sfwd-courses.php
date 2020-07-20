@@ -47,12 +47,13 @@ $modules = get_template_directory_uri() . "/modules/";
                 <h3><?php echo the_title(); ?></h3>
                 <div><?php 
                     $singleId = $post->ID;
-                    echo do_shortcode('[learndash_course_progress course_id"' . $singleId . '""]');
+                    echo do_shortcode('[learndash_course_progress course_id="' . $singleId . '"]');
                 ?></div>
             </div>
 
             <?php 
-                echo do_shortcode('[course_content course_id"' . $singleId . '""]');
+
+                echo do_shortcode('[course_content course_id="' . $singleId . '"]');
             ?>
 
         </div>  <!-- course_list_wrapper -->
